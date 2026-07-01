@@ -161,7 +161,7 @@
     <div class="grid-2">
       <div class="card">
         <div class="chart-box"><canvas id="orgCountChart"></canvas></div>
-        <p class="read"><b>By headcount, it's a retail platform.</b> 1,524 organizers — 94% — sit under $10M cumulative. The upper bands are a rounding error on the population: just 35 organizers above $25M, 17 above $50M, 8 above $100M.</p>
+        <p class="read"><b>By headcount, it's a retail platform.</b> The Under-$10M bar dwarfs everything else — 1,524 organizers, 94% of the base. Every bucket above $25M is a sliver by comparison: 35 organizers above $25M, 17 above $50M, 8 above $100M. Read the tiny bars against the giant one — that visual gap <i>is</i> the point.</p>
       </div>
       <div class="card">
         <div class="chart-box"><canvas id="capitalChart"></canvas></div>
@@ -344,23 +344,45 @@ const tt={backgroundColor:ink,padding:11,cornerRadius:4,titleFont:{size:12},body
 const bucketColors=['#c9d2e3','#a9bcdd','#8fa8d4','#e8a94e','#e0912f','#c95f3a','#a83226'];
 const bucketLabels=['Under $10M','$10–25M','$25–50M','$50–75M','$75–100M','$100–150M','$150M+'];
 
-// LANDSCAPE 1: org counts (log-ish via two-panel not needed; use bar with value labels)
+// LANDSCAPE 1: org counts — LINEAR axis (log distorts: makes 2 look ~40% of 1524). Value labels for legibility.
+const barValueLabels={id:'barValueLabels',afterDatasetsDraw(c){
+  const {ctx}=c; ctx.save();
+  ctx.font="700 12px 'Helvetica Neue',Arial,sans-serif"; ctx.fillStyle=ink; ctx.textBaseline='middle';
+  const meta=c.getDatasetMeta(0);
+  meta.data.forEach((bar,i)=>{
+    const v=c.data.datasets[0].data[i];
+    const label=c.data.datasets[0]._fmt?c.data.datasets[0]._fmt(v):v.toLocaleString();
+    ctx.textAlign='left';
+    ctx.fillText(label, bar.x+8, bar.y);
+  });
+  ctx.restore();
+}};
 new Chart(document.getElementById('orgCountChart'),{type:'bar',
-  data:{labels:bucketLabels,datasets:[{data:[1524,63,18,9,3,3,2],backgroundColor:bucketColors,borderRadius:3}]},
-  options:{responsive:true,maintainAspectRatio:false,indexAxis:'y',
+  data:{labels:bucketLabels,datasets:[{data:[1524,63,18,9,3,3,2],backgroundColor:bucketColors,borderRadius:3,_fmt:v=>v.toLocaleString()}]},
+  options:{responsive:true,maintainAspectRatio:false,indexAxis:'y',layout:{padding:{right:56}},
     plugins:{legend:{display:false},tooltip:{...tt,callbacks:{label:c=>c.parsed.x.toLocaleString()+' organizers'}},
-      title:{display:true,text:'Organizers per bucket (count)',color:mute,font:{size:12,weight:'normal'},padding:{bottom:8}}},
-    scales:{x:{type:'logarithmic',grid:{color:'#eef0f4'},ticks:{color:mute}},
-      y:{grid:{display:false},ticks:{color:ink,font:{size:11}}}}}});
+      title:{display:true,text:'Organizers per bucket (count, linear scale)',color:mute,font:{size:12,weight:'normal'},padding:{bottom:8}}},
+    scales:{x:{grid:{color:'#eef0f4'},ticks:{color:mute},title:{display:true,text:'Organizers',color:mute,font:{size:11}}},
+      y:{grid:{display:false},ticks:{color:ink,font:{size:11}}}}},plugins:[barValueLabels]});
 
-// LANDSCAPE 2: capital captured
+// LANDSCAPE 2: capital captured (linear, already truthful) — add matching value labels
+const capValueLabels={id:'capValueLabels',afterDatasetsDraw(c){
+  const {ctx}=c; ctx.save();
+  ctx.font="700 12px 'Helvetica Neue',Arial,sans-serif"; ctx.fillStyle=ink; ctx.textBaseline='middle'; ctx.textAlign='left';
+  const meta=c.getDatasetMeta(0);
+  meta.data.forEach((bar,i)=>{
+    const v=c.data.datasets[0].data[i];
+    ctx.fillText('$'+(v/1000).toFixed(2)+'B', bar.x+8, bar.y);
+  });
+  ctx.restore();
+}};
 new Chart(document.getElementById('capitalChart'),{type:'bar',
   data:{labels:bucketLabels,datasets:[{data:[1861.6,989.0,580.5,564.7,250.8,335.3,640.9],backgroundColor:bucketColors,borderRadius:3}]},
-  options:{responsive:true,maintainAspectRatio:false,indexAxis:'y',
+  options:{responsive:true,maintainAspectRatio:false,indexAxis:'y',layout:{padding:{right:56}},
     plugins:{legend:{display:false},tooltip:{...tt,callbacks:{label:c=>'$'+c.parsed.x.toFixed(0)+'M ('+(100*c.parsed.x/5222.8).toFixed(1)+'% of platform)'}},
-      title:{display:true,text:'Capital captured per bucket ($M)',color:mute,font:{size:12,weight:'normal'},padding:{bottom:8}}},
-    scales:{x:{grid:{color:'#eef0f4'},ticks:{color:mute,callback:v=>'$'+v}},
-      y:{grid:{display:false},ticks:{color:ink,font:{size:11}}}}}});
+      title:{display:true,text:'Capital captured per bucket (linear scale)',color:mute,font:{size:12,weight:'normal'},padding:{bottom:8}}},
+    scales:{x:{grid:{color:'#eef0f4'},ticks:{color:mute,callback:v=>'$'+v+'M'},title:{display:true,text:'Capital ($M)',color:mute,font:{size:11}}},
+      y:{grid:{display:false},ticks:{color:ink,font:{size:11}}}}},plugins:[capValueLabels]});
 
 // bucket table
 const BT=[
