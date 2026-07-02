@@ -114,6 +114,75 @@
 
   footer{margin-top:56px;border-top:1px solid var(--line);padding-top:18px;font-family:'Helvetica Neue',Arial,sans-serif;font-size:11.5px;color:var(--mute);line-height:1.6}
 
+  /* tabs */
+  .tabbar{display:flex;gap:2px;border-bottom:2px solid var(--ink);margin-top:30px}
+  .tab{font-family:'Helvetica Neue',Arial,sans-serif;font-size:14px;font-weight:700;letter-spacing:.01em;padding:13px 24px;cursor:pointer;color:var(--mute);border:2px solid transparent;border-bottom:none;border-radius:5px 5px 0 0;position:relative;top:2px;background:transparent}
+  .tab:hover{color:var(--ink-soft)}
+  .tab.on{color:var(--ink);background:var(--card);border-color:var(--ink);border-bottom:2px solid var(--card)}
+  .tab .sub{display:block;font-weight:400;font-size:11px;color:var(--mute);text-transform:uppercase;letter-spacing:.08em;margin-top:3px}
+  .tab.on .sub{color:var(--gold)}
+  .pane{display:none}
+  .pane.on{display:block}
+
+  /* strategy tab */
+  .thesis-band{background:linear-gradient(180deg,#fbf7ef 0%,#fff 100%);border:1px solid #ecdcc0;border-left:4px solid var(--gold);border-radius:5px;padding:26px 30px;margin-top:34px}
+  .thesis-band .k{font-family:'Helvetica Neue',Arial,sans-serif;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.14em;color:var(--gold);margin-bottom:12px}
+  .thesis-band p{font-size:18px;line-height:1.5;color:var(--ink)}
+  .thesis-band b{font-weight:700}
+
+  .hyp{display:flex;flex-direction:column;gap:14px;margin-top:6px}
+  .hcard{background:var(--card);border:1px solid var(--line);border-radius:5px;padding:20px 22px;display:grid;grid-template-columns:44px 1fr auto;gap:18px;align-items:start}
+  .hcard .hn{font-family:'Helvetica Neue',Arial,sans-serif;font-weight:800;font-size:22px;color:#d7dbe4;line-height:1}
+  .hcard h4{font-size:16px;font-weight:700;margin-bottom:5px}
+  .hcard p{font-size:14px;color:var(--ink-soft);line-height:1.5}
+  .estatus{font-family:'Helvetica Neue',Arial,sans-serif;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;padding:5px 11px;border-radius:12px;white-space:nowrap;text-align:center;line-height:1.3}
+  .estatus.proven{background:#e2f0e9;color:var(--pos)}
+  .estatus.partial{background:#fbf1dd;color:#a5741a}
+  .estatus.untested{background:#fbe6e2;color:var(--neg)}
+  .estatus small{display:block;font-weight:400;font-size:9px;opacity:.85;letter-spacing:.02em}
+
+  /* 2x2 matrix */
+  .matrix2{margin-top:8px}
+  .matrix-frame{display:grid;grid-template-columns:36px 1fr 1fr;grid-template-rows:auto minmax(220px,1fr) minmax(220px,1fr);gap:0}
+  .yaxis-label{writing-mode:vertical-rl;transform:rotate(180deg);font-family:'Helvetica Neue',Arial,sans-serif;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--mute);display:flex;align-items:center;justify-content:center}
+  .xaxis-label{font-family:'Helvetica Neue',Arial,sans-serif;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--mute);text-align:center;padding:8px 10px;display:flex;align-items:center;justify-content:center}
+  .qcell{border:1px solid var(--line);padding:20px;display:flex;flex-direction:column;overflow:hidden}
+  .qcell.hot{background:#f4f8f3;border-color:#bcdcc8;border-width:2px}
+  .qcell.cold{background:#fafbfc}
+  .qhead{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+  .qbadge{font-family:'Helvetica Neue',Arial,sans-serif;font-size:10px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;padding:3px 9px;border-radius:3px;white-space:nowrap}
+  .qbadge.rec{background:var(--pos);color:#fff}
+  .qbadge.next{background:var(--gold);color:#fff}
+  .qbadge.no{background:#e4e7ef;color:var(--mute)}
+  .qcell h4{font-family:Georgia,serif;font-size:16px;font-weight:700;line-height:1.2}
+  .qcell .qwho{font-family:'Helvetica Neue',Arial,sans-serif;font-size:11px;color:var(--mute);margin-bottom:12px}
+  .qcell ul{margin:0;padding:0;list-style:none}
+  .qcell li{font-family:'Helvetica Neue',Arial,sans-serif;font-size:12.5px;color:var(--ink-soft);padding:4px 0 4px 15px;position:relative;line-height:1.4}
+  .qcell li:before{position:absolute;left:0;top:4px;font-size:11px}
+  .qcell li.pro:before{content:"+";color:var(--pos);font-weight:800}
+  .qcell li.con:before{content:"\2212";color:var(--neg);font-weight:800}
+
+  .rec-box{background:var(--ink);color:#fff;border-radius:5px;padding:28px 32px;margin-top:8px}
+  .rec-box .k{font-family:'Helvetica Neue',Arial,sans-serif;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.14em;color:var(--gold);margin-bottom:14px;display:flex;gap:10px;align-items:center}
+  .rec-box .k .pend{background:rgba(224,145,47,.2);color:var(--gold);font-size:9px;padding:3px 8px;border-radius:10px;letter-spacing:.04em}
+  .rec-box p{font-size:15.5px;color:#dfe3ec;line-height:1.55;margin-bottom:14px}
+  .rec-box p:last-child{margin-bottom:0}
+  .rec-box b{color:#fff}
+  .rec-steps{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:20px}
+  .rstep{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:4px;padding:18px 20px}
+  .rstep .rlabel{font-family:'Helvetica Neue',Arial,sans-serif;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--gold);margin-bottom:8px}
+  .rstep h5{font-size:14.5px;color:#fff;margin-bottom:8px;font-family:Georgia,serif}
+  .rstep p{font-size:12.5px;color:#c4cad6;margin:0;line-height:1.45}
+
+  @media(max-width:880px){
+    .tab{padding:10px 14px;font-size:12px}
+    .hcard{grid-template-columns:1fr;gap:8px}
+    .hcard .hn{font-size:16px}
+    .matrix-frame{grid-template-columns:24px 1fr 1fr}
+    .qcell{min-height:auto;padding:14px}
+    .rec-steps{grid-template-columns:1fr}
+  }
+
   @media(max-width:880px){
     .wrap{padding:0 18px}h1{font-size:30px}
     .grid-2,.flags{grid-template-columns:1fr}
@@ -144,6 +213,13 @@
     <div class="stamp">Thesis<br>holds</div>
     <p><strong>The same organizers demonstrably run more deals and raise more each year as they mature</strong> — average deals per organizer climb from 5.6 in year one to 11–13 by year three, and average capital per organizer roughly triples. This is per-organizer demand growth, not just more mid-size signups. Crucially, once an organizer escapes the smallest tier, <strong>75% keep climbing</strong> — the threshold behaves like escape velocity. 34 organizers now sit above $25M cumulative and reach $50M in ~1.3 years once moving. The live risk is absolute scale (only ~11 are above $50M today) and that we can't see capital they run off-platform.</p>
   </div>
+
+  <div class="tabbar">
+    <div class="tab on" data-tab="analysis">The Evidence<span class="sub">Is the segment real &amp; growing?</span></div>
+    <div class="tab" data-tab="strategy">The Recommendation<span class="sub">So what do we build &amp; test?</span></div>
+  </div>
+
+  <div class="pane on" id="pane-analysis">
 
   <div class="kpis">
     <div class="kpi"><div class="n">45%</div><div class="l">Of all platform capital ($5.2B) comes from the 35 organizers above $25M — <b>2.2%</b> of accounts</div></div>
@@ -325,6 +401,149 @@
       </div>
     </div>
   </section>
+
+  </div><!-- /pane-analysis -->
+
+  <div class="pane" id="pane-strategy">
+
+    <div class="thesis-band">
+      <div class="k">The reframe</div>
+      <p>This was never about selling RIA registration. Our growth is <b>structurally tied to organizers climbing AUM bands</b> — the top 2% already drive 45% of our capital. So we have a direct, self-interested reason to help them <b>build their book of business</b>: raise more, close faster, compound a track record. RIA registration is the <i>milestone that proves it worked</i> — not the product. The product is the admin &amp; growth layer: CRM, deal intelligence, investor relationship tooling, LP support.</p>
+    </div>
+
+    <section>
+      <div class="sec-head">
+        <span class="sec-num">H</span>
+        <h2>The hypotheses — and what we've actually proven</h2>
+        <span class="sec-sub">Evidence status is the honest part</span>
+      </div>
+      <div class="hyp">
+        <div class="hcard">
+          <div class="hn">1</div>
+          <div>
+            <h4>Alignment — our fate is tied to theirs</h4>
+            <p>Sydecar's revenue growth depends on organizers moving <i>up</i> AUM bands. Their movement up = our revenue up, so helping them grow their book is self-interested, not charity.</p>
+          </div>
+          <div class="estatus proven">Proven<small>45% of capital,<br>top 2% of orgs</small></div>
+        </div>
+        <div class="hcard">
+          <div class="hn">2</div>
+          <div>
+            <h4>Desire — they <i>want</i> to scale</h4>
+            <p>Some testable share of these organizers actively want to grow their book and go up-market — rather than being content as occasional one-off syndicators. This is the "selling a need before it's perceived" risk, stated as a measurable claim.</p>
+          </div>
+          <div class="estatus untested">Untested<small>needs customer<br>conversations</small></div>
+        </div>
+        <div class="hcard">
+          <div class="hn">3</div>
+          <div>
+            <h4>Wedge — admin &amp; growth tooling, not compliance</h4>
+            <p>The right product is infrastructure that compounds their book (CRM, intelligence, investor support) — not registration support. It sidesteps regulatory liability and delivers value they perceive <i>today</i>, before any threshold bites.</p>
+          </div>
+          <div class="estatus untested">Untested<small>needs demand<br>validation</small></div>
+        </div>
+        <div class="hcard">
+          <div class="hn">4</div>
+          <div>
+            <h4>Direction — two different businesses, test the cheaper one</h4>
+            <p>Growing our existing base and acquiring net-new via a partner (e.g. COMPLY) are distinct motions with different owners and risk. They're not either/or — but they need separate scoping and separate tests.</p>
+          </div>
+          <div class="estatus partial">Partial<small>data frames it,<br>tests decide it</small></div>
+        </div>
+      </div>
+      <p class="caveat">Hypotheses 2 and 3 are the ones the dashboard <b>cannot</b> prove — no query answers "do they want this." Treating them as proven because the segment looks attractive is the exact narrative-vs-reality trap to avoid. They're assertions to test, not findings.</p>
+    </section>
+
+    <section>
+      <div class="sec-head">
+        <span class="sec-num">2×2</span>
+        <h2>Where to play</h2>
+        <span class="sec-sub">Who owns the customer × what we sell</span>
+      </div>
+      <div class="matrix2">
+        <div class="matrix-frame">
+          <div></div>
+          <div class="xaxis-label">Sell: Grow their book<br><span style="font-weight:400;text-transform:none;letter-spacing:0">(admin / CRM / intelligence)</span></div>
+          <div class="xaxis-label">Sell: SPV back-office<br><span style="font-weight:400;text-transform:none;letter-spacing:0">(our core product)</span></div>
+
+          <div class="yaxis-label">We own the customer</div>
+          <div class="qcell hot">
+            <div class="qhead"><span class="qbadge rec">Test first</span></div>
+            <h4>Help our base climb</h4>
+            <div class="qwho">Existing syndicators approaching a threshold</div>
+            <ul>
+              <li class="pro">Cheapest to build — we have the 34 already</li>
+              <li class="pro">Retention + expansion of high-value accounts</li>
+              <li class="pro">No regulatory liability (growth tools, not compliance)</li>
+              <li class="con">Small N today (~34); payback needs high per-account value</li>
+              <li class="con">They may not perceive the need yet (Hyp. 2)</li>
+            </ul>
+          </div>
+          <div class="qcell cold">
+            <div class="qhead"><span class="qbadge no">Already served</span></div>
+            <h4>SPV admin for our own base</h4>
+            <div class="qwho">What we already do today</div>
+            <ul>
+              <li class="pro">This is the current business — table stakes</li>
+              <li class="con">Not a new opportunity; no incremental thesis here</li>
+            </ul>
+          </div>
+
+          <div class="yaxis-label">A partner owns them</div>
+          <div class="qcell cold">
+            <div class="qhead"><span class="qbadge no">Not our lane</span></div>
+            <h4>Book-building for partners' clients</h4>
+            <div class="qwho">Selling growth tools into someone else's base</div>
+            <ul>
+              <li class="con">We don't own the relationship or the data</li>
+              <li class="con">Competes with the partner's own offering — weak fit</li>
+            </ul>
+          </div>
+          <div class="qcell hot">
+            <div class="qhead"><span class="qbadge next">Test in parallel</span></div>
+            <h4>COMPLY as an inbound channel</h4>
+            <div class="qwho">Their fund/RIA clients → our SPV back-office</div>
+            <ul>
+              <li class="pro">Bigger pool — net-new acquisition, not just 34</li>
+              <li class="pro">Sells our <i>core</i> product, no new build</li>
+              <li class="pro">Customers already know they're RIAs (need perceived)</li>
+              <li class="con">We don't own the channel; partner dependency</li>
+              <li class="con">Different motion &amp; economics — separate test</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <p class="caveat">Diagonal tension: top-left (our base, grow their book) is <b>smaller &amp; safer</b>; bottom-right (partner channel, our core product) is <b>bigger &amp; riskier</b>. The two off-diagonal quadrants are traps — either already-served or not our lane. The real choice is between the two highlighted cells.</p>
+    </section>
+
+    <section>
+      <div class="sec-head">
+        <span class="sec-num">→</span>
+        <h2>Recommendation</h2>
+        <span class="sec-sub">My read, pending both tests</span>
+      </div>
+      <div class="rec-box">
+        <div class="k">Recommendation <span class="pend">Directional · pending test results</span></div>
+        <p><b>Scope a small existing-base test first — it's the cheapest to build and it attacks the biggest unknown.</b> We already have the 34 organizers; the entire question is whether they <i>want</i> to grow their book and would value admin/intelligence tooling to do it (Hypotheses 2 &amp; 3). That's answerable with conversations, not code.</p>
+        <p><b>Run COMPLY discovery in parallel</b> — it's a partner conversation, not a product bet, so it costs us little to learn whether the inbound-channel motion has legs. The two tests de-risk different things and don't compete for build resources.</p>
+        <p style="color:#aeb6c6;font-size:13.5px;font-style:italic">Caveat that gates everything: on-platform AUM ≠ true regulatory AUM. We can't see capital these organizers run elsewhere or whether they're already registered. Both tests must surface that before any build decision.</p>
+        <div class="rec-steps">
+          <div class="rstep">
+            <div class="rlabel">Test A · Existing base</div>
+            <h5>Talk to 8–12 of the 34</h5>
+            <p>Do they want to scale? What's their book-building pain today? Would CRM / deal intelligence / LP tooling earn budget now — before any threshold bites? Prioritize the "slowing" and near-threshold names.</p>
+          </div>
+          <div class="rstep">
+            <div class="rlabel">Test B · Partner channel</div>
+            <h5>One COMPLY conversation</h5>
+            <p>Would they refer fund/RIA clients needing SPV back-office? What volume, what economics, who owns the customer? Validates the bigger-but-riskier quadrant without a build.</p>
+          </div>
+        </div>
+      </div>
+      <p class="caveat">What would kill each: Test A dies if the base is content as one-off syndicators with no book-building ambition. Test B dies if COMPLY's clients already have SPV admin or the referral economics don't work. Either outcome is cheap to learn and saves a far more expensive build.</p>
+    </section>
+
+  </div><!-- /pane-strategy -->
 
   <footer>
     Definitions — <b>AUM</b> means cumulative capital raised through closed Sydecar SPVs (TOTAL_RAISED, wire-out complete); a proxy for true regulatory AUM, not a measured figure. Organizers are <b>consolidated by person name</b> across multiple entity profiles, so cohort figures differ from single-account groupings. <b>Type</b> is derived from the EVERFUND flag (ever signed a Fund SOW). Funds (PRODUCT_LINE = FUND) and view-only deals excluded throughout. Tenure-year charts align each organizer to their own first close; later years rest on fewer organizers (declining tenure, not attrition) and are directional. Of the near-threshold organizers, the large majority are active; a handful are slowing and two look at-risk — none of the &gt;$50M group is dormant.<br><br>
@@ -591,6 +810,14 @@ document.querySelectorAll('[data-status]').forEach(ch=>ch.addEventListener('clic
   ch.classList.add('on');fStatus=ch.dataset.status;render();
 }));
 render();
+
+// tab switching
+document.querySelectorAll('.tab').forEach(t=>t.addEventListener('click',()=>{
+  const target=t.dataset.tab;
+  document.querySelectorAll('.tab').forEach(x=>x.classList.toggle('on',x===t));
+  document.querySelectorAll('.pane').forEach(p=>p.classList.toggle('on',p.id==='pane-'+target));
+  if(window.Chart&&Chart.instances){Object.values(Chart.instances).forEach(c=>{try{c.resize();}catch(e){}});}
+}));
 </script>
 <script>
 window.addEventListener('DOMContentLoaded',function(){
